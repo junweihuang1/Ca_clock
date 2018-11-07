@@ -1,0 +1,12 @@
+<view class='container'>
+  <view class='handle-content'>
+    <text>申请补卡类型：{{applyContent.apply.hr_attend_typeCard}}</text>
+    <text>申请人：{{applyContent.user.username}}</text>
+    <text>申请时间：{{applyContent.apply.hr_attend_apply_data}}</text>
+    <text>申请内容：</text>
+    <text>{{applyContent.apply.hr_attend_apply_reason}}</text>
+    <button type='primary' data-applyid='{{applyContent.apply.hr_attend_apply_id}}' data-status='3' bindtap='approval' wx:if="{{applyContent.apply.hr_attend_status == 1}}">同意</button>
+    <button type='warn' data-applyid='{{applyContent.apply.hr_attend_apply_id}}' data-status='2' bindtap='approval' wx:if="{{applyContent.apply.hr_attend_status == 1}}">驳回</button>
+    <button size='mini' plain='true' type='default' disabled='false' wx:if="{{applyContent.apply.hr_attend_status != 1}}">已审批</button>
+  </view>
+</view>

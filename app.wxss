@@ -1,0 +1,49 @@
+/**app.wxss**/
+.container {
+  /* height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box; */
+  height: 100%;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #fff;
+  font-family: "Microsoft Yahei";
+} 
+
+.btn{
+  width: 0rpx;
+  height: 0rpx;  
+  padding:0;
+  margin:0;
+  line-height: 1.5;
+  background-color: #0190a0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+.btn::after{
+  border:none;
+}
+
+.vv{
+  width: 386rpx;
+  height: 300rpx;
+  /* padding-top: 130rpx; */
+  color:#fff;
+  font-size:50rpx;
+  position: absolute;
+  top: 0;
+  right: -190rpx;
+  padding-top: 85rpx;
+}
+
+.vtext{
+  padding-bottom: 90rpx;
+}

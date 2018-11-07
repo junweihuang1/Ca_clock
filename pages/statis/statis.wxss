@@ -1,0 +1,50 @@
+/* pages/statis/statis.wxss */
+.statis-main{
+  width: 100%;
+  height: 100%;
+}
+
+.statis-main-content{
+  width: 100%;
+}
+
+.statis-main-column,.statis-main-phone{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  border-bottom: 1px solid #eee;
+  padding: 0 20rpx;
+
+}
+
+.statis-main-column text:first-child,.statis-main-phone-text{
+  font-size: 32rpx;
+  color: #161920;
+}
+
+.statis-main-column text:last-child{
+   font-size: 32rpx;
+  color: #808080;
+}
+
+.statis-main-phone-text{
+  width: 200rpx;
+}
+.statis-main-img{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.statis-main-img image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.statis-main-title{
+  font-size: 35rpx;
+  color: #0190a0;
+  font-weight: bold;
+  text-align: center;
+  padding: 30rpx 0 30rpx 0;
+}

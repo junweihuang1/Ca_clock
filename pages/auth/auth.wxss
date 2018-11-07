@@ -1,0 +1,19 @@
+/* pages/auth/auth.wxss */
+
+.content{
+  height: 400rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300rpx;
+}
+
+.content .text{
+  color: #808080;
+  font-size: 36rpx;
+}
+
+.content .bth{
+  width: 80%;
+}

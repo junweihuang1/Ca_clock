@@ -1,0 +1,74 @@
+/* pages/repair/repair.wxss */
+
+.repair-type-card{
+  height: 100rpx;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 0 20rpx;
+}
+
+.repair-type-card text{
+  font-size: 30rpx;
+}
+
+.radio-group {
+  height: 100%;
+  display: flex;
+}
+.radio {
+  font-size: 30rpx;
+  padding-left:20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.counts{
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.counts-tips,.counts-data{
+  margin: 0 20rpx;
+}
+.counts-data{
+  font-size: 28rpx;
+}
+.counts-icon{
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.page-section{
+  width: 100%;
+  height: 650rpx;
+}
+
+.page-section-title{
+  font-size: 30rpx;
+  padding: 20rpx;
+  /* text-align: center; */
+}
+
+.textarea-wrp{
+  height: 500rpx;
+  padding: 20rpx;
+  display: flex;
+   
+}
+.textarea-wrp textarea{
+  width: 100%;
+  height: 500rpx;
+  padding: 20rpx;
+  border: 1px solid #eee;
+}
+.bth{
+  width: 100%;
+  margin-top: 50rpx;
+}
+
+.bth button{
+  width: 80%;
+}

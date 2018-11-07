@@ -1,0 +1,34 @@
+<!--pages/login/login.wxml-->
+<view class='container'>
+
+  <view class='login-mian'>
+
+    <view class='login-mian-content'> 
+    
+      <view class='login-main-img'>
+        <image src='../../imgs/icon/icon-logo.jpg'></image>
+      </view>
+
+    </view>
+
+    <view class='login-from'>
+      <view class='login-from-content'>
+        <view class='login-from-input'>
+         <label class="loginLab">用户名</label> 
+         <input class="inputText" placeholder="请输入账号" bindinput="usernameInput" /> 
+        </view>
+        <view class='login-from-input'>
+         <label class="labPadding">密码</label> 
+         <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" /> 
+        </view>
+        <!--按钮-->
+        <view class="login-BtnView">
+        <form bindsubmit="submitInfo" report-submit="true">
+         <button class="loginBtn" type="primary" loading="{{loading}}" disabled="{{disabled}}" bindtap="login" formType="submit">登录</button> 
+        </form> 
+        </view> 
+      </view>
+    </view>
+
+  </view>
+</view>

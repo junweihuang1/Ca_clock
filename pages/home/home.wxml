@@ -1,0 +1,109 @@
+<!--pages/home/home.wxml-->
+<view class='container' hidden="{{!loadingHidden}}">
+
+  <view class='home-header'>
+
+    <view class='home-header-content'>
+      <text>{{username}}欢迎您！</text>
+      <text>{{year}}</text>
+    </view>
+
+  </view>
+
+  <view class='home-mian'>
+    <view class='home-main-position'>
+      <text>当前位置：{{address}}</text>
+      <view class='accuracy'>
+        <view class='accuracy-title'>位置精度：</view>
+        <view class='accuracy-content' style='color:#2ca33b;' wx:if="{{accuracyResult}}">当前位置可打卡</view>
+        <view class='accuracy-content' style='color:red;' wx:if="{{!accuracyResult}}">当前位置不在打卡范围内，请更新位置</view>
+      </view>
+      <button type='warn' size='mini' bindtap='updatePosition'>更新当前位置</button>
+    </view>
+    <view class='home-mian-content'>
+    <block wx:if="{{!outgoingState}}">
+      <view class='home-main-img' bindtap='onDetailCard' wx:if="{{cardOff != 3}}">
+        <image src='../../imgs/icon/icon-dop.png'></image>
+        <view class='home-main-textbox'>
+          <form bindsubmit="formSubmit" report-submit="true">
+            <button formType="submit" class='btn'>
+               <button formType="submit" class='btn'>
+                  <button formType="submit" class='btn'>
+                    <view class='vv' wx:if="{{cardOff == 1}}">上班打卡</view>
+                    <view class='vv' wx:if="{{cardOff == 2}}">下班打卡</view>
+                  </button>
+               </button>
+            </button>
+          </form>
+          <text class='vtext'>{{time}}</text>
+        </view>
+      </view>
+      <view class='home-main-img' bindtap='onTips' wx:else>
+        <image src='../../imgs/icon/icon-dop.png'></image>
+        <view class='home-main-textbox'>
+         <form>
+            <button class='btn'>
+              <view class='vv'>今日已打卡</view>              
+            </button>
+          </form>
+          <text  class='vtext'>{{time}}</text>
+        </view>
+      </view>
+    </block>
+    <view class='home-main-img' bindtap='onTipsGoOut' wx:if="{{outgoingState}}">
+      <image src='../../imgs/icon/icon-dop.png'></image>
+      <view class='home-main-textbox'>
+        <view class='home-main-textbox' style='left:-5rpx;top:0rpx;'>
+         <form>
+            <button class='btn'>
+              <view class='vv' style='right:-198rpx;'>外出中</view>              
+            </button>
+          </form>
+          <text  class='vtext'>{{time}}</text>
+        </view>
+      </view>
+    </view>
+      <view class='home-main-text'>
+        <text>当日打卡时间记录和位置</text>
+      </view>
+
+    </view>
+
+  </view>
+
+  <view class='home-operation' wx:if="{{!outgoingState}}">
+
+    <block wx:if="{{state}}">
+
+      <view class='home-operation-work'>
+        <view class='work-left'>
+          <text>上班打卡时间{{cardRecord.hr_attend_startWork}}</text>
+          <text>{{cardRecord.hr_attend_workAddress}}</text>
+        </view>
+        <view class='work-right'>
+          <text class='color-red'>{{cardRecord.hr_attend_workingState}}</text>
+        </view>
+      </view>
+
+      <view class='home-operation-work' wx:if="{{control!=0}}">
+        <view class='work-left'>
+          <text>下班打卡时间{{cardRecord.hr_attend_knockOff}}</text>
+          <text>{{cardRecord.hr_attend_offWorkAddress}}</text>
+        </view>
+        <view class='work-right'>
+          <text class='color-red'>{{cardRecord.hr_attend_restState}}</text>
+        </view>
+      </view>
+
+    </block>
+
+  </view>
+  <view class='home-operation' wx:if="{{outgoingState}}">
+    <button size='mini' type='warn' data-id='{{outgoingId}}' bindtap='onAddCardData'>取消外出</button>
+  </view>
+
+</view>
+
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading> 

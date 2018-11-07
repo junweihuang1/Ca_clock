@@ -1,0 +1,11 @@
+<!--pages/auth/auth.wxml-->
+<view class='container'>
+  <view class='content'>
+    <view class='text'>
+      <text>必须获得授权后才能正常访问</text>
+    </view>
+    <view class='bth'>
+      <button type='default' open-type='openSetting' bindopensetting='setting'>设置授权</button>
+    </view>
+  </view>
+</view>

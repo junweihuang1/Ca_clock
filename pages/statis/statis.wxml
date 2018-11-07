@@ -1,0 +1,33 @@
+<!--pages/statis/statis.wxml-->
+<view class='container'>
+  <view class='statis-main'>
+    <view class='statis-main-content'>
+      <view class='statis-main-phone' bindtap='supplementCard'>
+        <view class='statis-main-phone-text'>
+          <text>补卡申请</text>
+        </view>
+        <view class='statis-main-img'>
+          <image src="../../imgs/icon/icon-jiantou.png"></image>
+        </view>
+      </view>
+      <view class='statis-main-column'>
+        <text>当月出勤天数</text>
+        <text>{{statisData.statistics}}天</text>
+      </view>
+      <view class='statis-main-column'>
+        <text>当月迟到天数</text>
+        <text>{{statisData.beLate}}天</text>
+      </view>
+      <view class='statis-main-column'>
+        <text>当月早退天数</text>
+        <text>{{statisData.MoveForwardCard}}天</text>
+      </view>
+      <view class='statis-main-title'>
+        <text></text>
+      </view>
+      <view style='padding:0 20rpx;'>
+        <calendar days-color="{{dayStyle}}" weeks-type="cn" show-more-days="true" start-date="2017-01"  cell-size="45" bindnextMonth="next" bindprevMonth="prev" lunar="true" />
+      </view>
+    </view>
+  </view>
+</view>

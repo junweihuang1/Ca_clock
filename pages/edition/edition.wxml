@@ -1,0 +1,8 @@
+
+<view class='container'>
+  <view class='content'>
+    <view class='text'>
+      <text>检测到您当前的微信版本过低，为保证更好的体验，请升级您的微信版本！</text>
+    </view>
+  </view>
+</view>

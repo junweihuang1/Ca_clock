@@ -1,0 +1,30 @@
+<!--pages/repair/repair.wxml-->
+<view class='container'>
+  <view class='repair-type-card'>
+    <text>补卡类型：</text>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{items}}" wx:key="">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>
+        <text>{{item.value}}</text>
+      </label>  
+    </radio-group>
+  </view>
+  <view class='repair-type-card'>
+    <text>请选择补卡日期：</text>
+    <picker mode="date" value="{{date}}" start="2018-01-01" bindchange="bindDateChange">
+       <view class='counts'>
+            <text class='counts-data'>{{date}}</text>
+            <image class='counts-icon' src='../../imgs/icon/arrow@right.png'></image>
+          </view>
+    </picker>
+  </view>
+  <view class="page-section">
+    <view class="page-section-title">请输入补卡内容：</view>
+    <view class="textarea-wrp">
+      <textarea bindinput="coontentText" auto-focus="true" maxlength="200" show-confirm-bar="true" adjust-position="true" />
+    </view>
+  </view>
+  <view class='bth'>
+   <button type="primary" disabled="{{disabled}}" bindtap="submit">提交</button> 
+  </view> 
+</view>

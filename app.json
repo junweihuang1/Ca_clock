@@ -1,0 +1,54 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/statis/statis",
+    "pages/login/login",
+    "pages/detail/detail",
+    "pages/auth/auth",
+    "pages/popup/popup",
+    "pages/edition/edition",
+    "pages/repair/repair",
+    "pages/news/news",
+    "pages/handle/handle"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#0190a0",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"#fff",
+    "backgroundColor": "#fff",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "打卡",
+        "iconPath": "imgs/toolbar/home.png",
+        "selectedIconPath": "imgs/toolbar/home@selected.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "通知",
+        "iconPath": "imgs/toolbar/news.png",
+        "selectedIconPath": "imgs/toolbar/news@selected.png"
+      },
+      {
+        "pagePath": "pages/statis/statis",
+        "text": "统计",
+        "iconPath": "imgs/toolbar/statis.png",
+        "selectedIconPath": "imgs/toolbar/statis@selected.png"
+      }
+    ],
+    "borderStyle": "#eee",
+    "selectedColor": "#0190a0",
+    "color": "#a0a0a0",
+    "backgroundColor": "#fff"
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  }
+}

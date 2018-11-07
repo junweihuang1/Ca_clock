@@ -1,0 +1,175 @@
+/* pages/home/home.wxss */
+
+.home-header{
+  width: 100%;
+  height: 100%;
+  border-bottom: 1rpx solid #D0D0D7;
+}
+.home-header-content{
+  display: flex;
+  height: 90rpx;
+  align-items: center;
+  font-size: 30rpx;
+  margin: 0 20rpx;
+  justify-content: space-between;
+}
+
+.home-header-content text:first-child{
+  color:#06070b;
+}
+
+.home-header-content text:last-child{
+  color:#646583;
+}
+
+.home-mian{
+  width: 100%;
+  height: 100%;
+}
+
+.home-mian-content{
+  display: flex;
+  height: 450rpx;
+  padding: 20rpx 20rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-main-img{
+  width:386rpx;
+  height:386rpx;
+  position: relative;
+}
+
+.home-main-textbox{
+  display: flex;
+  width: 300rpx;
+  height: 300rpx;
+  position: absolute;
+  left: 45rpx;
+  top: 40rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-main-textbox text:first-child{
+  font-size: 50rpx;
+  color: #fff;
+}
+
+.home-main-textbox text:last-child{
+  color: #a1ddff;
+  font-size: 40rpx;
+}
+
+.home-main-img image{
+  width: 100%;
+  height: 100%;
+}
+.home-main-text{
+  /* font-weight: bold; */
+  font-size: 38rpx;
+}
+
+.home-operation{
+  width: 100%;
+  margin-top: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-operation-work{
+  width: 100%;
+  height: 190rpx;
+  padding: 20rpx 20rpx;
+  background-color: #fdfdfd; 
+  display: flex;
+}
+.home-operation-work:first-child{
+   border-top:1rpx solid #eee;
+   border-bottom: 1rpx solid #eee;
+}
+
+.home-operation-work:last-child{
+  border-bottom: 1rpx solid #eee;
+}
+
+
+.home-operation-work .work-left{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.home-operation-work .work-left text:first-child{
+  font-size: 32rpx;
+  font-weight: bold;
+  width: 100%;
+}
+
+.home-operation-work .work-left text:last-child{
+  font-size: 30rpx;
+}
+
+.home-operation-work .work-right{
+   width: 20%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-operation-work .work-right text{
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.color-red{
+  color: red;
+}
+.color-yes{
+  color: #62b900;
+}
+
+.home-operation-work .work-right button{
+  width: 100%;
+  height: 60rpx;
+}
+
+.home-main-position{
+
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.home-main-position text{
+  width: 100%;
+  font-size: 30rpx;
+  padding: 20rpx;
+}
+
+.accuracy{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 20rpx;
+}
+
+.accuracy-title{
+  font-size: 28rpx;
+}
+
+.accuracy-content{
+  font-size: 28rpx;
+  font-weight: bold;
+}

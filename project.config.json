@@ -1,0 +1,113 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wxa30684c40c756e56",
+	"projectname": "clock",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 11,
+			"list": [
+				{
+					"id": 0,
+					"name": "统计",
+					"pathName": "pages/statis/statis",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "3",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "获取授权",
+					"pathName": "pages/popup/popup",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "5",
+					"pathName": "pages/edition/edition",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "6",
+					"pathName": "pages/edition/edition",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "7",
+					"pathName": "pages/statis/statis",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "8",
+					"pathName": "pages/repair/repair",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/news/news",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "处理",
+					"pathName": "pages/handle/handle",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "处理",
+					"pathName": "pages/handle/handle",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "通知",
+					"pathName": "pages/news/news",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				}
+			]
+		}
+	}
+}
