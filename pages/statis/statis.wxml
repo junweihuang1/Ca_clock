@@ -26,8 +26,25 @@
         <text></text>
       </view>
       <view style='padding:0 20rpx;'>
-        <calendar days-color="{{dayStyle}}" weeks-type="cn" show-more-days="true" start-date="2017-01"  cell-size="45" bindnextMonth="next" bindprevMonth="prev" lunar="true" />
+        <calendar days-color="{{dayStyle}}" weeks-type="cn" show-more-days="true" start-date="2017-01"  cell-size="45" bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange" binddayClick="dayClick" lunar="true" />
       </view>
     </view>
   </view>
+
+  <!--  规则提示  -->
+    <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+        <view class='ruleZhezhaoContent'>
+            <view class='ruleZhezhaoTitle'>日期：2018-08-11</view>
+            <view class='ruleZhezhaoText'>
+                <text>上班时间：</text>
+                <text>{{startWork}}</text>
+            </view>
+            <view class='ruleZhezhaoText'>
+                <text>下班时间：</text>
+                <text>{{knockOff?knockOff:'没有记录'}}</text>
+            </view>
+            <image src='../../imgs/icon/gb.png' class='ruleHide' bindtap='hideRule'></image>
+        </view>
+    </view>
+
 </view>

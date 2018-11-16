@@ -48,3 +48,78 @@
   text-align: center;
   padding: 30rpx 0 30rpx 0;
 }
+
+/* 规则提示层  */
+.isRuleShow{
+    display: block;
+}
+.isRuleHide{
+    display: none;
+}
+.ruleZhezhao{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color:rgba(0, 0, 0, .5);
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+.ruleZhezhaoContent{
+    padding: 20rpx 0;
+    width: 80%;
+    background: #fff;
+    margin: 50% auto;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.ruleZhezhaoText{
+    width: 80%;
+    font-size: 30rpx;
+    color: #0190a0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 25rpx 0;
+}
+
+.ruleZhezhaoTitle{
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+}
+.ruleZhezhaoText text:nth-child(1){
+   width: 40%;
+   font-weight: bold;
+}
+.ruleZhezhaoText text:nth-child(2){
+    flex-wrap:wrap;
+    width: 50%;
+    font-size: 30rpx;
+    color: #808080;
+}
+.ruleHide{
+    height: 70rpx!important;
+    width: 70rpx!important;
+    position: absolute;
+    top: -20rpx;
+    right: -20rpx;
+}
+.rule{
+    display: block;
+    border: 1px solid #fff;
+    width: 100rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff;
+    height: 60rpx;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}

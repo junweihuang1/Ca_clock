@@ -17,7 +17,7 @@ class Statis extends Base {
   }
 
   //根据制定日期获取统计数据
-  getgetCardDays(currentYear,currentMonth,callback) {
+  getCardDays(currentYear,currentMonth,callback) {
     var params = {
       url: 'getCardDays'+'?currentYear=' + currentYear + '&currentMonth=' + currentMonth,
       callback: function (data) {
@@ -27,7 +27,16 @@ class Statis extends Base {
     this.request(params);
   }
 
-
+  //根据指定日期获取数据
+  getAppointTime(times, callback) {
+    var params = {
+      url: 'getAppointTime?times=' + times,
+      callback: function (data) {
+        callback && callback(data);
+      }
+    };
+    this.request(params);
+  }
 }
 
 export { Statis };

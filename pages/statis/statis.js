@@ -15,7 +15,8 @@ Page({
     dateRes:{
       fullYear: date.getFullYear(),
       month: date.getMonth() + 1
-    }
+    },
+    isRuleTrue:false
   },
 
   /**
@@ -48,27 +49,6 @@ Page({
     // })
   },
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
@@ -82,6 +62,7 @@ Page({
     wx.showNavigationBarLoading();
     setTimeout(function () {
       that.getStatis(() => {
+        that.getDayRes(that.data.dateRes.fullYear, that.data.dateRes.month);
         wx.stopPullDownRefresh();
         wx.hideNavigationBarLoading();
       });
@@ -92,6 +73,12 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  //关闭
+  hideRule: function () {
+    this.setData({
+      isRuleTrue: false
+    })
   },
   //点击跳转补卡申请页面
   supplementCard:function(){
@@ -115,6 +102,52 @@ Page({
     });
 
     callback && callback(true);
+  },
+  //监听点击日历具体某一天的事件
+  dayClick: function (event) {
+    var data = event.detail;
+    var that = this;
+    if (data.day<10){
+      data.day = '0' + data.day;
+    }
+    var times = data.year + '-' + data.month + '-' + data.day;
+    wx.showLoading({
+      title: '加载中...',
+      mask: true,
+      success: ()=>{
+        statis.getAppointTime(times, (res) => {
+          if(!res){
+            wx.showModal({
+              title: '操作提示',
+              content: '当日没有打卡记录',
+              showCancel:false
+            })
+            wx.hideLoading();
+            return;
+          }
+          that.setData({
+            startWork: res.hr_attend_startWork,
+            knockOff: res.hr_attend_knockOff
+          });
+          wx.hideLoading();
+          this.setData({
+            isRuleTrue: true
+          })
+        });
+      }
+    })
+  },
+  //监听点击日历标题日期选择器事件
+  dateChange:function(event){
+    var currentYear = event.detail.currentYear,
+      currentMonth = event.detail.currentMonth;
+    this.setData({
+      dateRes: {
+        fullYear: currentYear,
+        month: currentMonth
+      }
+    });
+    this.getDayRes(currentYear, currentMonth);
   },
   //下一页
   next:function (event) {
@@ -149,10 +182,10 @@ Page({
     var dayStyle = this.data.dayStyle,
       that = this;
     wx.showLoading({
-      title: '',
+      title: '加载中...',
       mask:true,
       success:function(){
-        statis.getgetCardDays(currentYear, currentMonth, (res) => {
+        statis.getCardDays(currentYear, currentMonth, (res) => {
           if (res) {
             dayStyle = [];
             if (res.normalData) {
@@ -181,6 +214,5 @@ Page({
       }
     })
   }
-
 
 })

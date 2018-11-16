@@ -21,7 +21,7 @@ Page({
    control:0,//0只显示上班打卡，1为显示上班和下班
    loadingHidden: false,
    outgoingState:false, //true为有外出
-   accuracyResult:0//位置精度
+   accuracyResult:0,//位置精度
   },
 
   /**
@@ -192,10 +192,10 @@ Page({
             qqmapsdk.reverseGeocoder({
               coord_type: 5,
               location: {
-                // latitude: res.latitude,
-                // longitude: res.longitude
-                latitude: 23.167450,
-                longitude: 113.325850
+                latitude: res.latitude,
+                longitude: res.longitude
+                // latitude: 23.155910,
+                // longitude: 112.896640
               },
               get_poi:1,
               poi_options: 'radius=300;page_size=20;page_index=1',
