@@ -127,7 +127,8 @@ Page({
           }
           that.setData({
             startWork: res.hr_attend_startWork,
-            knockOff: res.hr_attend_knockOff
+            knockOff: res.hr_attend_knockOff,
+            hr_date: res.hr_attend_date
           });
           wx.hideLoading();
           this.setData({

@@ -42,6 +42,10 @@ Page({
         year: home.getNowTimeYear()
       });
     }.bind(this), 1000)
+    //定时刷新地址
+    setInterval(function () {
+      this.getAddres();
+    }.bind(this), 300000)
   },
   /**
    * 生命周期函数--监听页面显示
@@ -194,8 +198,8 @@ Page({
               location: {
                 latitude: res.latitude,
                 longitude: res.longitude
-                // latitude: 23.155910,
-                // longitude: 112.896640
+                // latitude: 23.098370,
+                // longitude: 113.318780
               },
               get_poi:1,
               poi_options: 'radius=300;page_size=20;page_index=1',
@@ -205,7 +209,7 @@ Page({
                 var pois = addressRes.result.pois;
                 //发起地址验证请求
                 home.getAddressJudges(pois, (res) => {
-                  //console.log(res);
+                  //console.log();
                   that.setData({
                     'address': address,
                     accuracyResult: res,

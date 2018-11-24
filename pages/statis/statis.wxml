@@ -34,7 +34,7 @@
   <!--  规则提示  -->
     <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
         <view class='ruleZhezhaoContent'>
-            <view class='ruleZhezhaoTitle'>日期：2018-08-11</view>
+            <view class='ruleZhezhaoTitle'>日期：{{hr_date}}</view>
             <view class='ruleZhezhaoText'>
                 <text>上班时间：</text>
                 <text>{{startWork}}</text>
