@@ -21,7 +21,7 @@ Page({
    control:0,//0只显示上班打卡，1为显示上班和下班
    loadingHidden: false,
    outgoingState:false, //true为有外出
-   accuracyResult:0,//位置精度
+   accuracyResult:false,//位置精度
   },
 
   /**
@@ -76,7 +76,8 @@ Page({
     home.getUser((data)=>{
       if(data.user){
         this.setData({
-          'username': data.user
+          'username': data.user,
+          loadingHidden: true
         })
       }
     })
@@ -115,20 +116,24 @@ Page({
                     //验证位置精度是否为true
                     if (accuracyResult == true) {
                       if (that.data.cardOff == 1) {
-                        //正确就推送一条上班打卡成功消息
-                        home.sendMssage(3, that.data.address,(res)=>{
-                          return;
-                        });
                         //正确就发起打卡请求
                         home.getCardData(that.data.address, (data) => {
+                          wx.hideLoading();
+                          if(data.error){
+                            that.errorTips('打卡失败，没找到所在项目或班组');
+                            return;
+                          }
                           if (data == true) {
-                            wx.hideLoading();
                             wx.showToast({
                               title: '打卡成功',
                               icon: 'success',
                               duration: 1000,
                               success: function () {
                                 that.getCard();
+                                //推送一条上班打卡成功消息
+                                home.sendMssage(3, that.data.address, (res) => {
+                                  return true;
+                                });
                               }
                             })
                           } else {
@@ -138,10 +143,6 @@ Page({
 
 
                       } else {
-                        //正确就推送一条下班打卡成功消息
-                        home.sendMssage(4, that.data.address, (res) => {
-                          return;
-                        });
                         //发起下班打卡请求
                         home.getOffCardData(that.data.address, (data) => {
                           if (data) {
@@ -152,12 +153,16 @@ Page({
                               duration: 1000,
                               success: function () {
                                 that.getCard();
+                                //推送一条下班打卡成功消息
+                                home.sendMssage(4, that.data.address, (res) => {
+                                  return;
+                                });
                               }
                             })
 
 
                           } else {
-                            that.errorTips('打卡失败，网络繁忙');
+                            that.errorTips('打卡失败，网络繁忙，请下拉刷新~');
                           }
                         })
                       }
@@ -198,8 +203,8 @@ Page({
               location: {
                 latitude: res.latitude,
                 longitude: res.longitude
-                // latitude: 23.098370,
-                // longitude: 113.318780
+                //latitude: 23.093280,
+                //longitude: 113.399640
               },
               get_poi:1,
               poi_options: 'radius=300;page_size=20;page_index=1',
@@ -209,11 +214,9 @@ Page({
                 var pois = addressRes.result.pois;
                 //发起地址验证请求
                 home.getAddressJudges(pois, (res) => {
-                  //console.log();
                   that.setData({
                     'address': address,
-                    accuracyResult: res,
-                    loadingHidden: true,
+                    accuracyResult: res
                   })
                   callback && callback(true);
                 });
