@@ -201,10 +201,10 @@ Page({
             qqmapsdk.reverseGeocoder({
               coord_type: 5,
               location: {
-                latitude: res.latitude,
-                longitude: res.longitude
-                //latitude: 23.093280,
-                //longitude: 113.399640
+                // latitude: res.latitude,
+                // longitude: res.longitude
+                latitude: 22.929469,
+                longitude: 113.409961
               },
               get_poi:1,
               poi_options: 'radius=300;page_size=20;page_index=1',
@@ -313,6 +313,7 @@ Page({
                     icon: 'success',
                     duration: 1000,
                     success: function () {
+                      that.getCard()
                       that.setData({
                         outgoingState:false
                       });
