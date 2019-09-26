@@ -16,7 +16,7 @@
       <view class='accuracy'>
         <view class='accuracy-title'>位置精度：</view>
         <view class='accuracy-content' style='color:#2ca33b;' wx:if="{{accuracyResult}}">当前位置可打卡</view>
-        <view class='accuracy-content' style='color:red;' wx:if="{{!accuracyResult}}">当前位置不在打卡范围内，请更新位置</view>
+        <view class='accuracy-content' style='color:red;' wx:if="{{!accuracyResult}}">距最近打卡项目：{{distance}}米,打卡范围：{{range}}米</view>
       </view>
       <button type='warn' size='mini' bindtap='updatePosition'>更新当前位置</button>
     </view>
@@ -99,11 +99,11 @@
 
   </view>
   <view class='home-operation' wx:if="{{outgoingState}}">
-    <button size='mini' type='warn' data-id='{{outgoingId}}' bindtap='onAddCardData'>取消外出</button>
+    <button size='mini' type='warn' bindtap='onAddCardData'>取消外出</button>
   </view>
 
 </view>
 
 <loading hidden="{{loadingHidden}}">
-    加载中...
+    地址验证中...请不要刷新页面
 </loading> 

@@ -12,15 +12,15 @@
       </view>
       <view class='statis-main-column'>
         <text>当月出勤天数</text>
-        <text>{{statisData.statistics}}天</text>
+        <text>{{statisData.totalDayNum}}天</text>
       </view>
       <view class='statis-main-column'>
         <text>当月迟到天数</text>
-        <text>{{statisData.beLate}}天</text>
+        <text>{{statisData.comeLateDayNum}}天</text>
       </view>
       <view class='statis-main-column'>
         <text>当月早退天数</text>
-        <text>{{statisData.MoveForwardCard}}天</text>
+        <text>{{statisData.LeaveEarlyDayNum}}天</text>
       </view>
       <view class='statis-main-title'>
         <text></text>
@@ -32,7 +32,7 @@
   </view>
 
   <!--  规则提示  -->
-    <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+    <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}" bindtap='hideRule'>
         <view class='ruleZhezhaoContent'>
             <view class='ruleZhezhaoTitle'>日期：{{hr_date}}</view>
             <view class='ruleZhezhaoText'>

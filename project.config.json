@@ -8,13 +8,17 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.5",
+	"libVersion": "2.6.0",
 	"appid": "wxa30684c40c756e56",
 	"projectname": "clock",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

@@ -9,7 +9,8 @@ Page({
   data: {
     newsOff: 0, //0为无通知，1为有
     approvalOff: 0, //0为无审批，1为有
-     currentTabsIndex: 0
+     currentTabsIndex: 0,
+    ApprovalNoticeRes:[]
   },
 
   /**
@@ -73,10 +74,11 @@ Page({
    * 获取审批消息
    */
     news.getApprovalMsg((data) => {
+      console.log(data.data)
       if (data) {
         this.setData({
           approvalOff: 1,
-          'ApprovalMsgRes': data
+          'ApprovalMsgRes': data.data
         })
       }
     });
@@ -85,9 +87,10 @@ Page({
    */
     news.getApprovalNotice((data) => {
       if (data) {
+        console.log(data.data)
         this.setData({
           newsOff: 1,
-          'ApprovalNoticeRes': data
+          'ApprovalNoticeRes': data.data
         })
       }
     });

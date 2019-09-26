@@ -10,12 +10,12 @@ class Repair extends Base {
   //提交请求表单
   PostSupplementCard(checkedValue,dateTime,contentText,callback){
     var params = {
-      url: 'supplement',
+      url: 'applyFillCard',
       type: 'POST',
       data:{
-        checkedValue: checkedValue,
-        dateTime: dateTime,
-        contentText: contentText
+        hr_attend_typeCard: checkedValue,
+        hr_attend_apply_data: dateTime,
+        hr_attend_apply_reason: contentText
       },
       callback: function (data) {
         callback && callback(data);

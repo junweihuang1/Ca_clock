@@ -44,21 +44,25 @@ class Home extends Base{
   };
   //请求用户名
   getUser(callback){
-    var params = {
-      url:'User',
-      type:'POST',
-      callback:function(data){
-        callback && callback(data);
-      }
-    };
-    this.request(params);
+    // var params = {
+    //   url:'User',
+    //   type:'POST',
+    //   callback:function(data){
+    //     console.log(data)
+    //     callback && callback(data);
+    //   }
+    // };
+    // this.request(params);
   }
 
   //请求外出判断
   getOutgoing(callback) {
     var params = {
-      url: 'goouts',
-      type: 'POST',
+      url: 'getFieldPersonnelList',
+      data:{
+        pageSize:"1",
+        limit:"5"
+      },
       callback: function (data) {
         callback && callback(data);
       }
@@ -69,13 +73,14 @@ class Home extends Base{
   //请求上班打卡接口
   getCardData(address,callback){
     var params = {
-      url: 'getClock',
+      url: 'goWorkPuch',
       data:{
-        address:address
+        hr_attend_workAddress:address,
+        hr_attend_workIp:'192.168.11.112'
       },
       type: 'POST',
       callback:function(data){
-        callback && callback(data);
+        callback && callback(true);
       }
     }
     this.request(params);
@@ -84,9 +89,10 @@ class Home extends Base{
   //请求下班打卡接口
   getOffCardData(address, callback) {
     var params = {
-      url: 'OffWork',
+      url: 'goAfterWorkPuch',
       data: {
-        address: address
+        hr_attend_offWorkAddress:address,
+        hr_attend_underIp:'192.168.11.112'
       },
       type: 'POST',
       callback: function (data) {
@@ -99,7 +105,7 @@ class Home extends Base{
   //请求当天打卡记录
   getCardRecord(callback){
     var params = {
-      url: 'getCard',
+      url: 'getCurDayPunchInfo',
       callback: function (data) {
         callback && callback(data);
       }
@@ -125,10 +131,10 @@ class Home extends Base{
   //取消外出
   getGoOutCancel(id,callback){
     var params = {
-      url: 'outgoing',
+      url: 'endOutWorkActive',
       type: 'POST',
       data: {
-        id: id
+        field_personnel_id: id
       },
       callback: function (data) {
         callback && callback(data);
@@ -136,6 +142,37 @@ class Home extends Base{
     }
     this.request(params);
   }
+
+  getJavaAddress(data, callback){
+    var params = {
+      url: 'verifyPunchAddress',
+      type: 'POST',
+      data: data,
+      callback: function (data) {
+        callback && callback(data);
+      }
+    }
+    this.request(params);
+    // wx.request({
+    //   url: 'https://www.casdapi.com/casd2/admin/verifyPunchAddress',
+    //   data: data,
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded' // 默认值
+    //   },
+    //   method:'POST',
+    //   success:(res)=>{
+    //     callback && callback(res.data)
+    //   },
+    //   fail:err=>{
+    //     callback && callback(data)
+    //     wx.showToast({
+    //       title: '服务器内部错误,请联系技术员',
+    //       icon:'none'
+    //     })
+    //   }
+    // })
+  }
+
   
 }
 

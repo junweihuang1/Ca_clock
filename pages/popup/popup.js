@@ -1,4 +1,6 @@
 // pages/popup/popup.js
+import { Token } from '../../utils/token.js';
+var login=new Token()
 Page({
 
   /**
@@ -77,6 +79,8 @@ Page({
                 showCancel: false,
                 content: '授权成功',
                 success: function () {
+                  var token = wx.getStorageSync('token')
+                  login.veirfyFromServer(token);
                   wx.switchTab({
                     url: '../home/home',
                   })

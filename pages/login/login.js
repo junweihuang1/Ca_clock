@@ -64,9 +64,9 @@ Page({
       })
     }else{
       login.getTokenFromServer(username,password, (res) => {
-        if (res.msg) {
+        if (res.data) {
           wx.showToast({
-            title: res.msg,
+            title: res.data.msg,
             icon: 'none',
             duration: 1500,
             success: function () {
@@ -77,6 +77,7 @@ Page({
             }
           })
         } else {
+          login.veirfyFromServer(res)
           wx.showToast({
             title: '登录成功',
             icon: 'success',

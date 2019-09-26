@@ -9,7 +9,7 @@ class News extends Base{
   //获取审批消息
   getApprovalMsg(callback){
     var params = {
-      url: 'getMsg',
+      url: 'getUnreviewedAttendApply',
       callback: function (data) {
         callback && callback(data);
       }
@@ -20,15 +20,13 @@ class News extends Base{
   //获取通知
   getApprovalNotice(callback) {
     var params = {
-      url: 'getNotice',
+      url: 'getCurAttendApplyInfo',
       callback: function (data) {
         callback && callback(data);
       }
     };
     this.request(params);
   }
-
-
 }
 
 export { News };

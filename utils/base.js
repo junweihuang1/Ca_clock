@@ -4,22 +4,19 @@ class Base{
   constructor(){
    this.baseRequestUrl = Config.restUrl;
   }
-
   //请求
 
   request(params){
     var that = this;
     var url = this.baseRequestUrl + params.url;
-
     if (!params.type) {
       params.type = 'GET';
     }
-
     wx.request({
       url: url,
       data: params.data,
       header: {
-        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
         'token':wx.getStorageSync('token')
       },
       method: params.type,
@@ -42,6 +39,9 @@ class Base{
         }else{
           params.callback && params.callback(res.data);
         }
+      },
+      fail: function (res) {
+        console.log(res);
       }
     })
 
@@ -59,7 +59,8 @@ class Base{
 
     let data = {
       form_id:formId,
-      expice: parseInt(new Date().getTime() / 1000) + 604800 //计算7天后的过期时间时间戳
+      expice: parseInt(new Date().getTime() / 1000) + 604800 
+      //计算7天后的过期时间时间戳
     }
 
     formIds.push(data);
@@ -67,7 +68,6 @@ class Base{
     app.globalData.gloabalFomIds = formIds; //保存推送码并赋值给全局变量
 
   }
-
   //发送formid给服务器存放
   sendFormId(formIds, callback) {
     var params = {

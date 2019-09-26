@@ -6,9 +6,13 @@ class Statis extends Base {
     super();//基类构造函数
   }
   //获取统计数据
-  getStatisticalSata(callback) {
+  getStatisticalSata(setyear,setmonth,callback) {
     var params = {
-      url: 'statistics',
+      url: 'getAttendanceStatistics',
+      data:{
+        hr_attend_startWork: setyear,
+        hr_attend_knockOff: setmonth
+      },
       callback: function (data) {
         callback && callback(data);
       }
@@ -19,7 +23,7 @@ class Statis extends Base {
   //根据制定日期获取统计数据
   getCardDays(currentYear,currentMonth,callback) {
     var params = {
-      url: 'getCardDays'+'?currentYear=' + currentYear + '&currentMonth=' + currentMonth,
+      url: 'getUserPunchDayInfo?hr_attend_startWork=' + currentYear + '&hr_attend_knockOff=' + currentMonth,
       callback: function (data) {
         callback && callback(data);
       }
@@ -30,7 +34,7 @@ class Statis extends Base {
   //根据指定日期获取数据
   getAppointTime(times, callback) {
     var params = {
-      url: 'getAppointTime?times=' + times,
+      url: 'getUserDatePunchInfo?hr_attend_date=' + times,
       callback: function (data) {
         callback && callback(data);
       }

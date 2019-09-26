@@ -4,6 +4,8 @@ import { Statis } from 'statis-model.js';
 var statis = new Statis();
 var login = new Token();
 var date = new Date();
+var year = new Date().getFullYear()
+var month = new Date().getMonth() + 1
 Page({
 
   /**
@@ -36,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getStatis();
+    this.getStatis(year,month);
     this.getDayRes(this.data.dateRes.fullYear, this.data.dateRes.month);
     //时刻监听登录状态
     // wx.getStorage({
@@ -93,14 +95,13 @@ Page({
       path: 'pages/home/home'
     }
   },
-  //请求统计数据
-  getStatis:function(callback){
-    statis.getStatisticalSata((data)=>{
+  //请求统计数据 //当前月份的打卡信息
+  getStatis: function (setyear,setmonth,callback){
+    statis.getStatisticalSata(setyear,setmonth,(data)=>{
       this.setData({
-        'statisData':data
+        'statisData':data.data
       })
     });
-
     callback && callback(true);
   },
   //监听点击日历具体某一天的事件
@@ -116,7 +117,7 @@ Page({
       mask: true,
       success: ()=>{
         statis.getAppointTime(times, (res) => {
-          if(!res){
+          if(!res.data){
             wx.showModal({
               title: '操作提示',
               content: '当日没有打卡记录',
@@ -126,9 +127,9 @@ Page({
             return;
           }
           that.setData({
-            startWork: res.hr_attend_startWork,
-            knockOff: res.hr_attend_knockOff,
-            hr_date: res.hr_attend_date
+            startWork: res.data.hr_attend_startWork,
+            knockOff: res.data.hr_attend_knockOff,
+            hr_date: res.data.hr_attend_date
           });
           wx.hideLoading();
           this.setData({
@@ -154,6 +155,7 @@ Page({
   next:function (event) {
     var currentYear = event.detail.currentYear,
       currentMonth = event.detail.currentMonth;
+    this.getStatis(currentYear, currentMonth)
     this.setData({
       dateRes:{
         fullYear:currentYear,
@@ -168,6 +170,7 @@ Page({
   prev:function (event) {
     var currentYear = event.detail.currentYear,
       currentMonth = event.detail.currentMonth;
+    this.getStatis(currentYear, currentMonth)
     this.setData({
       dateRes: {
         fullYear: currentYear,
@@ -189,19 +192,29 @@ Page({
         statis.getCardDays(currentYear, currentMonth, (res) => {
           if (res) {
             dayStyle = [];
-            if (res.normalData) {
-              for (let i = 0; i < res.normalData.length; i++) {
-                dayStyle.push(
-                  { month: 'current', day: res.normalData[i], color: 'white', background: '#0190a0' }
-                );
-              }
+            if (res.data) {
+              // for (let i = 0; i < res.data.length; i++) {
+              //   let day = new Date(res.data[i].date).getDate()
+              //   dayStyle.push(
+              //     { month: 'current', day: day, color: 'white', background: '#0190a0' }
+              //   );
+              // }
+              res.data.forEach(item=>{
+                console.log(item)                
+                if(item.normal=="true"){
+                  dayStyle.push(
+                    { month: 'current', day: that.getNewDay(item.date), color: 'white', background: '#0190a0' }
+                  );
+                }else{
+                  dayStyle.push(
+                    { month: 'current', day: that.getNewDay(item.date), color: 'white', background: 'red' }
+                  );
+                }
+              })
             }
-            if (res.abnormalData) {
-              for (let i = 0; i < res.abnormalData.length; i++) {
-                dayStyle.push(
-                  { month: 'current', day: res.abnormalData[i], color: 'white', background: 'red' }
-                );
-              }
+            var nowMonth = new Date().getMonth() + 1
+            if (currentMonth == nowMonth){
+              dayStyle.push({ month: 'current', day: new Date().getDate(), color: 'red', background: '' })
             }
           } else {
             dayStyle = [];
@@ -214,6 +227,9 @@ Page({
         })
       }
     })
+  },
+  getNewDay:function(times){
+    var newtime = new Date(times).getDate()
+    return newtime
   }
-
 })

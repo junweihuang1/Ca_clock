@@ -50,7 +50,7 @@ Page({
   applyData: function (applyID){
     handle.getApplyData(applyID,(data)=>{
       this.setData({
-        'applyContent':data
+        'applyContent':data.data
       });
     });
   },

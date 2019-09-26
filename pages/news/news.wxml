@@ -2,7 +2,7 @@
 <view class='container'>
   <view class='news-conter'>
     <view class='news-nav'>
-      <block wx:for="{{['通知','审批']}}">
+      <block wx:for="{{['通知','审批']}}" wx:key="">
         <view class="nav-left {{currentTabsIndex==index?'selected':''}}" bindtap='onTabsItemTap' data-index='{{index}}'>
           <text>{{item}}</text>
         </view>
@@ -11,16 +11,16 @@
     <view>
       <view hidden="{{currentTabsIndex != 0}}">
         <view wx:if="{{newsOff!=0}}">
-          <block wx:for="{{ApprovalNoticeRes}}">
+          <block wx:for="{{ApprovalNoticeRes}}" wx:key="">
             <view class='news-list'>
               <view class='news-list-left'>
                 <text>补卡申请</text>
-                <text>您于{{item.hr_attend_message_date}}提交了{{item.items.hr_attend_typeCard}}补卡申请</text>
+                <text>您于{{item.hr_attend_apply_data}}提交了{{item.hr_attend_typeCard}}补卡申请</text>
               </view>
               <view class='news-list-right'>
-                <text style="color:#0190a0" wx:if="{{item.items.hr_attend_status  == 1}}">管理员未审核</text>
-                <text style="color:#4dc86f" wx:if="{{item.items.hr_attend_status  == 3}}">管理员已同意</text>
-                <text wx:if="{{item.items.hr_attend_status  == 2}}">管理员已驳回</text>
+                <text style="color:#0190a0" wx:if="{{item.hr_attend_status  == 1}}">管理员未审核</text>
+                <text style="color:#4dc86f" wx:if="{{item.hr_attend_status  == 3}}">管理员已同意</text>
+                <text wx:if="{{item.hr_attend_status  == 2}}">管理员已驳回</text>
               </view>
             </view>
           </block>
@@ -30,7 +30,7 @@
     </view>
     <view hidden="{{currentTabsIndex != 1}}">
       <view wx:if="{{approvalOff!=0}}">
-        <block wx:for="{{ApprovalMsgRes}}">
+        <block wx:for="{{ApprovalMsgRes}}" wx:key="">
           <view class='news-list' data-applyID="{{item.hr_attend_apply_id}}" bindtap='newsHandle'>
             <view class='news-list-left'>
               <text>{{item.hr_attend_typeCard}}补卡申请</text>

@@ -1,8 +1,8 @@
 {
-  "pages":[
+  "pages": [    
     "pages/home/home",
     "pages/statis/statis",
-    "pages/login/login",
+    "pages/login/login", 
     "pages/detail/detail",
     "pages/auth/auth",
     "pages/popup/popup",
@@ -11,13 +11,13 @@
     "pages/news/news",
     "pages/handle/handle"
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#0190a0",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"#fff",
+    "navigationBarTextStyle": "black",
     "backgroundColor": "#fff",
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "list": [
@@ -40,7 +40,7 @@
         "selectedIconPath": "imgs/toolbar/statis@selected.png"
       }
     ],
-    "borderStyle": "#eee",
+    "borderStyle": "black",
     "selectedColor": "#0190a0",
     "color": "#a0a0a0",
     "backgroundColor": "#fff"
@@ -49,6 +49,12 @@
     "calendar": {
       "version": "1.1.3",
       "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   }
 }
